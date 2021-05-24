@@ -1,65 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title><?= $title ?></title>
-	<link href="<?= base_url('sb-admin') ?>/css/sb-admin-2.min.css" rel="stylesheet">
-</head>
-<body>
-	<div class="row">
-		<div class="col text-center">
-			<h3 class="h3 text-dark"><?= $title ?></h3>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-md-4">
-			<table class="table table-borderless">
+<strong><?= $title ?> - <?= $laporan->no_laporan ?></strong>
+
+<table width="100%">
+	<tr>
+		<td>
+			<table width="100%">
 				<tr>
-					<td><strong>No Terima</strong></td>
+					<td><strong>No laporan</strong></td>
 					<td>:</td>
-					<td><?= $laporan->no_terima ?></td>
+					<td><?= $laporan->no_laporan ?></td>
 				</tr>
 				<tr>
-					<td><strong>Nama Petugas</strong></td>
+					<td><strong>Cabang</strong></td>
 					<td>:</td>
-					<td><?= $laporan->nama_petugas ?></td>
+					<td><?= $laporan->nama_cabang ?></td>
 				</tr>
 				<tr>
-					<td><strong>Nama Supplier</strong></td>
+					<td><strong>Nama Store Manager</strong></td>
 					<td>:</td>
-					<td><?= $laporan->nama_supplier ?></td>
+					<td><?= $laporan->nama_store_manager ?></td>
 				</tr>
 				<tr>
-					<td><strong>Waktu Terima</strong></td>
+					<td><strong>Waktu laporan</strong></td>
 					<td>:</td>
-					<td><?= $laporan->tgl_terima ?> - <?= $laporan->jam_terima ?></td>
+					<td><?= $laporan->tgl_laporan ?> - <?= $laporan->jam_laporan ?></td>
 				</tr>
 			</table>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-md-12">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<td><strong>No</strong></td>
-						<td><strong>Nama Barang</strong></td>
-						<td><strong>Jumlah</strong></td>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($all_detail_laporan as $detail_laporan): ?>
-						<tr>
-							<td><?= $no++ ?></td>
-							<td><?= $detail_laporan->nama_barang ?></td>
-							<td><?= $detail_laporan->jumlah ?> <?= strtolower($detail_laporan->satuan) ?></td>
-						</tr>
-					<?php endforeach ?>
-				</tbody>
+		</td>
+
+		<td>
+			<table width="100%">
+				<tr>
+					<td><strong>Target</strong></td>
+					<td>:</td>
+					<td>Rp. <?= $laporan->target ?></td>
+				</tr>
+				<tr>
+					<td><strong>NETT</strong></td>
+					<td>:</td>
+					<td>Rp. <?= $laporan->nett ?></td>
+				</tr>
+				<tr>
+					<td><strong>MTD NETT</strong></td>
+					<td>:</td>
+					<td>Rp. <?= $laporan->mtd_nett ?></td>
+				</tr>
+				<tr>
+					<td><strong>Sales Race</strong></td>
+					<td>:</td>
+					<td><?= $laporan->sales_race ?></td>
+				</tr>
+				<tr>
+					<td><strong>Sales Achieve</strong></td>
+					<td>:</td>
+					<td><?= $laporan->sales_achieve ?></td>
+				</tr>
+				<tr>
+					<td><strong>SC</strong></td>
+					<td>:</td>
+					<td><?= $laporan->sc ?></td>
+				</tr>
+				<tr>
+					<td><strong>Large</strong></td>
+					<td>:</td>
+					<td><?= $laporan->large ?></td>
+				</tr>
 			</table>
-		</div>
-	</div>
-</body>
-</html>
+		</td>
+
+		<td>
+			<table width="100%">
+				<tr>
+					<td><strong>Grab</strong></td>
+					<td>:</td>
+					<td>Rp. <?= $laporan->grab ?></td>
+				</tr>
+				<tr>
+					<td><strong>Gofood</strong></td>
+					<td>:</td>
+					<td>Rp. <?= $laporan->gofood ?></td>
+				</tr>
+				<tr>
+					<td><strong>Walk in</strong></td>
+					<td>:</td>
+					<td>Rp. <?= $laporan->walk_in ?></td>
+				</tr>
+				<tr>
+					<td><strong>Shopee Food</strong></td>
+					<td>:</td>
+					<td>Rp. <?= $laporan->shopee_food ?></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<hr>
+
+<table width="100%" class="table table-bordered">
+	<thead>
+		<tr>
+			<td><strong>No</strong></td>
+			<td><strong>Nama Produk</strong></td>
+			<td><strong>Jumlah</strong></td>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($all_detail_laporan as $detail_laporan) : ?>
+			<tr>
+				<td><?= $no++ ?></td>
+				<td><?= $detail_laporan->nama_produk ?></td>
+				<td><?= $detail_laporan->jumlah ?></td>
+			</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>
