@@ -19,7 +19,49 @@ class Dashboard extends CI_Controller{
 		$this->data['jumlah_cabang'] = $this->m_cabang->jumlah();
 		$this->data['jumlah_kategori'] = $this->m_kategori->jumlah();
 		$this->data['jumlah_store_manager'] = $this->m_store_manager->jumlah();
-		$this->data['jumlah_laporan'] = $this->m_laporan->jumlah();
+		
+		$qtoday = date('Y-m-d');
+		$qlaporan = "select count(*) as hitung from laporan where str_to_date(tgl_laporan , '%d/%m/%Y') between '$qtoday' and '$qtoday'";
+		$this->data['jumlah_laporan'] = $this->db->query($qlaporan)->result_array()[0]['hitung'];
+
+		$qprod = "
+		SELECT 
+
+		dl.nama_produk,
+		sum(dl.jumlah) as jumlah
+		
+		
+		FROM 
+		
+		laporan l
+		
+		INNER JOIN detail_laporan dl ON dl.no_laporan = l.no_laporan 
+		
+		WHERE str_to_date(l.tgl_laporan , '%d/%m/%Y') between '$qtoday' and '$qtoday'
+		
+		GROUP BY dl.nama_produk";
+
+		$this->data['dataproduk'] = $this->db->query($qprod)->result_array();
+
+		$qtoko = "
+		SELECT 
+
+		l.nama_cabang,
+		sum(dl.jumlah) as jumlah
+		
+		
+		FROM 
+		
+		laporan l
+		
+		INNER JOIN detail_laporan dl ON dl.no_laporan = l.no_laporan 
+		
+		WHERE str_to_date(l.tgl_laporan , '%d/%m/%Y') between '$qtoday' and '$qtoday'
+		
+		GROUP BY l.nama_cabang";
+
+		$this->data['datatoko'] = $this->db->query($qtoko)->result_array();
+
 		$this->data['jumlah_admin'] = $this->m_admin->jumlah();
 		$this->data['jumlah_cabang'] = $this->m_cabang->jumlah();
 		$this->load->view('dashboard', $this->data);

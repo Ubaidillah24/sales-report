@@ -65,7 +65,7 @@
 										<?php if ($this->session->login['role'] == 'admin'): ?>
 										<div class="form-group col-md-3">
 											<label>Nama Store Manager</label>
-											<select name="nama_cabang" id="nama_cabang" class="form-control">
+											<select name="nama_store_manager" id="nama_store_manager" class="form-control">
 												<option value="">Pilih Store_manager</option>
 													<?php foreach ($all_store_manager as $store_manager): ?>
 														<option value="<?= $store_manager->nama ?>"><?= $store_manager->nama ?></option>
