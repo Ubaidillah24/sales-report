@@ -11,7 +11,9 @@ class Login extends CI_Controller{
 	}
 
 	public function index(){
-		$this->load->view('login');
+		$this->data['title'] = 'Sales Report - Login';
+
+		$this->load->view('login', $this->data);
 	}
 
 	public function proses_login(){

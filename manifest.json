@@ -2,7 +2,7 @@
     "theme_color": "#4d198e",
     "background_color": "#ffffff",
     "display": "standalone",
-    "start_url": "http://localhost/sales-report/",
+    "start_url": ".",
     "name": "Chatime Sales Report",
     "short_name": "Sales Report",
     "icons": [
