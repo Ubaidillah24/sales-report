@@ -135,6 +135,43 @@ class Laporan extends CI_Controller{
         echo json_encode($output);
     }
 
+	public function dataAllDetail($start = null , $end = null)
+    {
+        $column_order   = array();
+        $column_search  = array();
+        $order          = array();
+        $select         = "";
+
+		
+
+        if($start == null || $end == null){
+            $where          = "";
+        }else{
+
+            $where = "WHERE str_to_date(l.tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
+        }
+		
+		$query ="
+		SELECT dl.* FROM detail_laporan dl 
+
+		INNER JOIN laporan l ON l.no_laporan = dl.no_laporan $where
+		
+		";
+
+		
+        
+        $list = $this->db->query($query)->result_array();
+		// echo $this->db->last_query();
+        
+        $output = array(
+            "draw" => null,
+            "recordsTotal" => count($list),
+            "recordsFiltered" => count($list),
+            "data" => $list
+        );
+        echo json_encode($output);
+    }
+
 	public function export(){
 		$dompdf = new Dompdf();
 		// $this->data['perusahaan'] = $this->m_usaha->lihat();

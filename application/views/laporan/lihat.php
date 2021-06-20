@@ -23,7 +23,8 @@
 							<h1 class="h3 m-0 text-gray-800"><?= $title ?></h1>
 						</div>
 						<div class="float-right">
-							<!-- <a href="<?= base_url('laporan/export') ?>" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a> -->
+							<a href="#" class="btn btn-success btn-sm" id="exportFile"><i class="fa fa-file-excel"></i>&nbsp;&nbsp;Export Excel</a>
+							<a href="#" class="btn btn-warning btn-sm" id="exportFile1"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export Pdf</a>
 							<a href="<?= base_url('laporan/tambah') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah</a>
 						</div>
 					</div>
@@ -69,10 +70,33 @@
 											<td>Cabang</td>
 											<td>Nama Store Manager</td>
 											<td>Tanggal Laporan</td>
+											<td>Target</td>
+											<td>NETT</td>
+											<td>MTD NETT</td>
+											<td>Sales Race</td>
+											<td>Sales Achieve</td>
+											<td>SC</td>
+											<td>Large</td>
+											<td>Grab</td>
+											<td>Gofood</td>
+											<td>Walk In</td>
+											<td>Shopee Food</td>
 											<td>Aksi</td>
 										</tr>
 									</thead>
-									
+
+								</table>
+								<table class="table table-bordered" id="dataTableDetail" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<td>No</td>
+											<td>No Laporan</td>
+											<td>Nama Produk</td>
+											<td>Jumlah</td>
+											
+										</tr>
+									</thead>
+
 								</table>
 							</div>
 						</div>
@@ -88,6 +112,27 @@
 
 	<script>
 		$(document).ready(function() {
+			$("#exportFile").click(function() {
+				
+				var table = $('#dataTable').DataTable();
+				table.button(0).trigger();
+
+				var table1 = $('#dataTableDetail').DataTable();
+				table1.button(0).trigger();
+
+			})
+
+			$("#exportFile1").click(function() {
+				
+				var table = $('#dataTable').DataTable();
+				table.button(1).trigger();
+
+				var table1 = $('#dataTableDetail').DataTable();
+				table1.button(1).trigger();
+
+			})
+
+			
 			var thisDate = new Date().toISOString().slice(0, 10);
 
 			$('#min').datepicker({
@@ -123,9 +168,10 @@
 				window.location.href = `<?= base_url(); ?>laporan/index/` + tgl_awal + '/' + tgl_akhir;
 
 
-				})
+			})
 
 			var path = `<?php echo base_url() . 'laporan/dataAll/' . $this->uri->segment(3) . '/' . $this->uri->segment(4); ?>`;
+			var pathDetail = `<?php echo base_url() . 'laporan/dataAllDetail/' . $this->uri->segment(3) . '/' . $this->uri->segment(4); ?>`;
 
 			$('#dataTable').DataTable({
 				"scrollX": true,
@@ -136,8 +182,7 @@
 					"url": path,
 					"type": "POST"
 				},
-				"columns": [
-					{
+				"columns": [{
 						"data": {
 
 						},
@@ -153,17 +198,50 @@
 					{
 						"data": "nama_cabang"
 					},
-					
+
 					{
 						"data": "nama_store_manager"
 					},
 					{
 						"data": {},
-						render:function(data){
+						render: function(data) {
 							return data.tgl_laporan + ' - ' + data.jam_laporan
 						}
 					},
-					
+					{
+						"data": "target"
+					},
+					{
+						"data": "nett"
+					},
+					{
+						"data": "mtd_nett"
+					},
+					{
+						"data": "sales_race"
+					},
+					{
+						"data": "sales_achieve"
+					},
+					{
+						"data": "sc"
+					},
+					{
+						"data": "large"
+					},
+					{
+						"data": "grab"
+					},
+					{
+						"data": "gofood"
+					},
+					{
+						"data": "walk_in"
+					},
+					{
+						"data": "shopee_food"
+					},
+
 
 					{
 						"data": {
@@ -172,8 +250,8 @@
 						render: function(data) {
 
 							return ` 
-									<a href="<?= base_url('laporan/detail/'); ?>`+data.no_laporan+`" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
-									<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('laporan/hapus/') ?>`+data.no_laporan+`" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+									<a href="<?= base_url('laporan/detail/'); ?>` + data.no_laporan + `" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+									<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('laporan/hapus/') ?>` + data.no_laporan + `" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 									
 									
 									`;
@@ -196,13 +274,59 @@
 				]
 			});
 
+			$('#dataTableDetail').DataTable({
+				"scrollX": true,
+				"scrollCollapse": true,
+				"processing": true,
+				//"serverSide": true,
+				"ajax": {
+					"url": pathDetail,
+					"type": "POST"
+				},
+				"columns": [{
+						"data": {
+
+						},
+						render: function(data, type, row, meta) {
+							var num = meta.row + meta.settings._iDisplayStart + 1;
+
+							return num;
+						}
+					},
+					{
+						"data": "no_laporan"
+					},
+					{
+						"data": "nama_produk"
+					},
+					{
+						"data": "jumlah"
+					}
+
+					
+				],
+				"dom": 'Blfrtip',
+				"buttons": [{
+						"extend": 'excelHtml5',
+						"title": 'REKAP DATA DETAIL LAPORAN_' + `<?= $this->uri->segment(3) ?>` + `_` + `<?= $this->uri->segment(4) ?>`,
+						"footer": true
+					},
+					{
+						"extend": 'pdf',
+						"title": 'REKAP DATA DETAIL LAPORAN_' + `<?= $this->uri->segment(3) ?>` + `_` + `<?= $this->uri->segment(4) ?>`,
+						"footer": true,
+						"orientation": 'landscape',
+						"pageSize": 'LEGAL'
+					},
+				]
+			});
 		});
 	</script>
 
 	<style>
 		.dt-buttons {
 			margin-bottom: 10px;
-			/* display:none; */
+			display:none;
 			/* float: right!important; */
 		}
 
