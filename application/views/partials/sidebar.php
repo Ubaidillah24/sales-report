@@ -32,6 +32,12 @@
 					<span>Master Cabang</span></a>
 			</li>
 
+			<li class="nav-item <?= $aktif == 'kasir' ? 'active' : '' ?>">
+				<a class="nav-link" href="<?= base_url('kasir') ?>">
+					<i class="fas fa-fw fa-users"></i>
+					<span>Master Kasir</span></a>
+			</li>
+
 			<li class="nav-item <?= $aktif == 'store_manager' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('store_manager') ?>">
 					<i class="fas fa-fw fa-users"></i>

@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller{
 		$this->load->model('M_store_manager', 'm_store_manager');
 		$this->load->model('M_laporan', 'm_laporan');
 		$this->load->model('M_admin', 'm_admin');
+		$this->load->model('M_kasir', 'm_kasir');
 	}
 
 	public function index(){
