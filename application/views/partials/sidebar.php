@@ -10,6 +10,7 @@
 			</li>
 			<hr class="sidebar-divider">
 
+			<?php if ($this->session->login['role'] == 'admin' || $this->session->login['role'] == 'store_manager'): ?>
 			<div class="sidebar-heading">
 				Master
 			</div>
@@ -46,6 +47,8 @@
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
+
+			<?php endif; ?>
 	
 			<div class="sidebar-heading">
 				Transaksi

@@ -56,6 +56,7 @@
 												<option value="">Masuk Sebagai</option>
 												<option value="store_manager">SM</option>
 												<option value="admin">Admin</option>
+												<option value="kasir">Kasir</option>
 											</select>
 										</div>
 										<button type="submit" class="btn btn-primary btn-block" name="login">

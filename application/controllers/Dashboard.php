@@ -3,7 +3,7 @@
 class Dashboard extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
-		if($this->session->login['role'] != 'store_manager' && $this->session->login['role'] != 'admin') redirect();
+		if($this->session->login['role'] != 'store_manager' && $this->session->login['role'] != 'admin' && $this->session->login['role'] != 'kasir') redirect();
 		$this->data['aktif'] = 'dashboard';
 		$this->load->model('M_produk', 'm_produk');
 		$this->load->model('M_cabang', 'm_cabang');

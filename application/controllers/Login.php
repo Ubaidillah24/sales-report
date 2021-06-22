@@ -8,6 +8,7 @@ class Login extends CI_Controller{
 		$this->load->model('M_store_manager', 'm_store_manager');
 		$this->load->model('M_cabang', 'm_cabang');
 		$this->load->model('M_admin', 'm_admin');
+		$this->load->model('M_kasir', 'm_kasir');
 	}
 
 	public function index(){
@@ -21,6 +22,7 @@ class Login extends CI_Controller{
 
 		if($this->input->post('role') === 'store_manager') $this->_proses_login_store_manager($this->input->post('username'));
 		elseif($this->input->post('role') === 'admin') $this->_proses_login_admin($this->input->post('username'));
+		elseif($this->input->post('role') === 'kasir') $this->_proses_login_kasir($this->input->post('username'));
 		else {
 			?>
 			<script>
@@ -71,6 +73,37 @@ class Login extends CI_Controller{
 					'nama' => $get_admin->nama,
 					'username' => $get_admin->username,
 					'password' => $get_admin->password,
+					'role' => $this->input->post('role'),
+					'jam_masuk' => date('H:i:s')
+				];
+
+				$this->session->set_userdata('login', $session);
+				$this->session->set_flashdata('success', '<strong>Login</strong> Berhasil!');
+				redirect('dashboard');
+			} else {
+				$this->session->set_flashdata('error', 'Password Salah!');
+				redirect();
+			}
+		} else {
+			$this->session->set_flashdata('error', 'Username Salah!');
+			redirect();
+		}
+	}
+
+	protected function _proses_login_kasir($username){
+
+		// var_dump($_POST);die;
+
+		// echo '<br><br>';
+
+		$get_kasir = $this->m_kasir->lihat_username($username);
+		if($get_kasir){
+			if(password_verify($this->input->post('password'), $get_kasir->password)){
+				$session = [
+					'nik' => $get_kasir->nik,
+					'nama' => $get_kasir->nama,
+					'username' => $get_kasir->username,
+					'password' => $get_kasir->password,
 					'role' => $this->input->post('role'),
 					'jam_masuk' => date('H:i:s')
 				];

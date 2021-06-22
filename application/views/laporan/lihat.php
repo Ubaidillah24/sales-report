@@ -81,6 +81,7 @@
 											<td>Gofood</td>
 											<td>Walk In</td>
 											<td>Shopee Food</td>
+											<td>Status</td>
 											<td>Aksi</td>
 										</tr>
 									</thead>
@@ -240,6 +241,10 @@
 					},
 					{
 						"data": "shopee_food"
+					},
+
+					{
+						"data": "status"
 					},
 
 
