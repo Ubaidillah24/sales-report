@@ -4,7 +4,15 @@ class M_laporan extends CI_Model {
 	protected $_table = 'laporan';
 
 	public function lihat(){
-		return $this->db->get($this->_table)->result();
+		if ($this->session->login['role'] == 'store_manager') {
+			return $this->db->get_where($this->_table , array('status'=>'REVIEW'))->result();
+
+		} elseif ($this->session->login['role'] == 'admin') {
+			return $this->db->get($this->_table)->result();
+			
+		} else {
+			return $this->db->get($this->_table)->result();
+		}	
 	} 
 
 	public function jumlah(){

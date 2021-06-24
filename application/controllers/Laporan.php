@@ -51,7 +51,7 @@ class Laporan extends CI_Controller{
 			'gofood' => $this->input->post('gofood'),
 			'walk_in' => $this->input->post('walk_in'),
 			'shopee_food' => $this->input->post('shopee_food'),
-			
+			'status' => $this->input->post('status') ?: 'REVIEW',
 		];
 
 		$data_detail_laporan = [];
