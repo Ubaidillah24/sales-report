@@ -82,7 +82,7 @@
 											<td>Walk In</td>
 											<td>Shopee Food</td>
 											<td>Status</td>
-											<td>Aksi</td>
+											<td >Aksi</td>
 										</tr>
 									</thead>
 
@@ -242,9 +242,8 @@
 					{
 						"data": "shopee_food"
 					},
-
 					{
-						"data": "status"
+						"data": "status" 
 					},
 
 
@@ -255,10 +254,11 @@
 						render: function(data) {
 
 							return ` 
+									<a href="<?= base_url('laporan/ubah/'); ?>` + data.no_laporan + `" class="btn btn-primary btn-sm" ><i class="fa fa-pen"></i></a>
+
 									<a href="<?= base_url('laporan/detail/'); ?>` + data.no_laporan + `" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
 									<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('laporan/hapus/') ?>` + data.no_laporan + `" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-									
-									
+																		
 									`;
 						}
 					}

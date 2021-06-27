@@ -28,6 +28,13 @@ class M_laporan extends CI_Model {
 		return $this->db->insert($this->_table, $data);
 	}
 
+	public function ubah($data, $no_laporan){
+		$query = $this->db->set($data);
+		$query = $this->db->where(['no_laporan' => $no_laporan]);
+		$query = $this->db->update($this->_table);
+		return $query;
+	}
+
 	public function hapus($no_laporan){
 		return $this->db->delete($this->_table, ['no_laporan' => $no_laporan]);
 	}

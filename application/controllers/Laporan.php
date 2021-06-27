@@ -81,6 +81,32 @@ class Laporan extends CI_Controller{
 		$this->load->view('laporan/detail', $this->data);
 	}
 
+	public function ubah($no_laporan){
+		if ($this->session->login['role'] == 'kasir'){
+			$this->session->set_flashdata('error', 'Ubah data hanya untuk store manager & admin!');
+			redirect('dashboard');
+		}
+
+		$this->data['title'] = 'Ubah Status';
+		$this->data['laporan'] = $this->m_laporan->lihat_no_laporan($no_laporan);
+		$this->load->view('laporan/ubah', $this->data);
+	}
+
+	public function proses_ubah($no_laporan){
+
+		$data_laporan = [
+			'status' => $this->input->post('status'),
+		];
+
+		if($this->m_laporan->ubah($data_laporan, $no_laporan)){
+			$this->session->set_flashdata('success', 'Data Produk <strong>Berhasil</strong> Diubah!');
+			redirect('laporan');
+		} else {
+			$this->session->set_flashdata('error', 'Data Produk <strong>Gagal</strong> Diubah!');
+			redirect('laporan');
+		}
+	}
+
 	public function hapus($no_laporan){
 		if($this->m_laporan->hapus($no_laporan) && $this->m_detail_laporan->hapus($no_laporan)){
 			$this->session->set_flashdata('success', 'Invoice Laporan <strong>Berhasil</strong> Dihapus!');
