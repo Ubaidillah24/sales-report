@@ -3,7 +3,7 @@
     "background_color": "#ffffff",
     "display": "standalone",
     "start_url": ".",
-    "name": "Chatime Sales Report",
+    "name": "Sales Report",
     "short_name": "Sales Report",
     "icons": [
         {

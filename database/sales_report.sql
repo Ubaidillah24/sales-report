@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -128,4 +128,4 @@ INSERT INTO `store_manager` (`id`, `kode`, `nama`, `id_cabang`, `username`, `pas
 (6,	'Kasir - 61',	'Lina',	2,	'lina',	'$2y$10$gQzf0z2QXDyEC8UV1Dj6heEzsSw8I7ta.8LOjbHHU6QF2fikGnHhm'),
 (7,	'Kasir - 38',	'Mif',	3,	'mif',	'$2y$10$ZYbqtZ50/dh/khcDO2QblOHnQiapANq6nNdutcZLfwmBIXUQOY8Dq');
 
--- 2021-06-28 14:47:49
+-- 2021-08-03 02:00:13

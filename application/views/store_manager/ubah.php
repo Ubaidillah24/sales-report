@@ -33,7 +33,7 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label for="kode"><strong>Kode SM</strong></label>
-											<input type="text" name="kode" placeholder="Masukkan Kode store_manager" autocomplete="off"  class="form-control" required value="<?= $store_manager->kode ?>" maxlength="8" readonly>
+											<input type="text" name="kode" placeholder="Masukkan Kode store_manager" autocomplete="off"  class="form-control" required value="<?= $store_manager->kode ?>">
 										</div>
 										<div class="form-group col-md-6">
 											<label for="nama"><strong>Cabang</strong></label>

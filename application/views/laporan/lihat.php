@@ -82,7 +82,7 @@
 											<td>Walk In</td>
 											<td>Shopee Food</td>
 											<td>Status</td>
-											<td >Aksi</td>
+											<td>Aksi</td>
 										</tr>
 									</thead>
 

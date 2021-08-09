@@ -33,7 +33,7 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label for="kode"><strong>Kode admin</strong></label>
-											<input type="text" name="kode" placeholder="Masukkan Kode admin" autocomplete="off"  class="form-control" required value="Admin - <?= mt_rand(10, 99) ?>" maxlength="8" readonly>
+											<input type="text" name="kode" placeholder="Masukkan Kode admin" autocomplete="off"  class="form-control" required>
 										</div>
 										<div class="form-group col-md-6">
 											<label for="nama"><strong>Nama admin</strong></label>
