@@ -20,6 +20,11 @@ class M_laporan extends CI_Model {
 		return $query->num_rows();
 	}
 
+	public function status_laporan(){
+
+	}
+
+
 	public function lihat_no_laporan($no_laporan){
 		return $this->db->get_where($this->_table, ['no_laporan' => $no_laporan])->row();
 	}

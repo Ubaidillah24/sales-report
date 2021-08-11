@@ -44,8 +44,17 @@ CREATE TABLE `detail_laporan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `detail_laporan` (`no_laporan`, `nama_produk`, `jumlah`) VALUES
-('LAP1624765073',	'Chatime Susu',	2),
-('LAP1624765073',	'Chatime Milk Tea',	4);
+('LAP1628645909',	'Chatime Susu',	1),
+('LAP1628647013',	'Ketam Hitam',	1),
+('LAP1628649755',	'Chatime Susu',	1),
+('LAP1628649755',	'Ketam Hitam',	2),
+('LAP1628649755',	'Chatime Milk Tea',	3),
+('LAP1628650453',	'Chatime Susu',	1),
+('LAP1628650453',	'Ketam Hitam',	1),
+('LAP1628650540',	'Chatime Milk Tea',	10),
+('LAP1628650910',	'Chatime Susu',	1),
+('LAP1628650910',	'Ketam Hitam',	2),
+('LAP1628650910',	'Chatime Milk Tea',	2);
 
 DROP TABLE IF EXISTS `kasir`;
 CREATE TABLE `kasir` (
@@ -59,7 +68,9 @@ CREATE TABLE `kasir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `kasir` (`id`, `nik`, `nama`, `id_cabang`, `username`, `password`) VALUES
-(1,	24314,	'Gita',	3,	'gita',	'$2y$10$FnL663lR7oxzPbUf/ofNHuPa.lpOxGn3U2a9hNrz9p4lTWo6VoMEy');
+(1,	24314,	'Gita',	3,	'gita',	'$2y$10$FnL663lR7oxzPbUf/ofNHuPa.lpOxGn3U2a9hNrz9p4lTWo6VoMEy'),
+(2,	123456,	'Diki',	2,	'diki',	'$2y$10$Ourw.GOJIB7dXTA29Ugm.edEJutOY.8fl1dBVtkn4wKUlbGwHksGy'),
+(3,	123242,	'Alya',	4,	'alya',	'$2y$10$NCggXT9NVycAaZANwrjvIO7ptXbIKSXX8ueJUj2z/6FDk9jNp4O8G');
 
 DROP TABLE IF EXISTS `kategori`;
 CREATE TABLE `kategori` (
@@ -97,7 +108,10 @@ CREATE TABLE `laporan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `laporan` (`id`, `no_laporan`, `tgl_laporan`, `jam_laporan`, `nama_cabang`, `nama_store_manager`, `target`, `nett`, `mtd_nett`, `sales_race`, `sales_achieve`, `sc`, `large`, `grab`, `gofood`, `walk_in`, `shopee_food`, `status`) VALUES
-(15,	'LAP1624765073',	'27/06/2021',	'10:37:53',	'Chatime Aeon Mall, BSD',	'Mif',	200000,	3000000,	2100000,	'43%',	'55%',	33,	33,	430000,	770000,	77000,	756700,	'REVIEW');
+(19,	'LAP1628649755',	'11/08/2021',	'09:42:35',	'Chatime Aeon Mall, BSD',	'Mif',	1200000,	1100000,	1200000,	'78',	'80',	400000,	500000,	230000,	400200,	320000,	123000,	'REJECT'),
+(20,	'LAP1628650453',	'11/08/2021',	'09:54:13',	'Chatime LW Foodcourt',	'Niken',	1267890,	4234356,	4324242,	'99',	'78',	120000,	450000,	33000,	94577,	88777,	56757,	'ACCEPT'),
+(21,	'LAP1628650540',	'11/08/2021',	'09:55:40',	'Chatime Q Big, BSD',	'andre',	4445545,	2323233,	232323,	'77',	'77',	346466,	666444,	767677,	777700,	77000,	99000,	'ACCEPT'),
+(22,	'LAP1628650910',	'11/08/2021',	'10:01:50',	'Chatime Aeon Mall, BSD',	'Mif',	1200000,	1300000,	1100000,	'88',	'98',	320000,	440000,	65000,	770000,	400000,	540000,	'REVIEW');
 
 DROP TABLE IF EXISTS `produk`;
 CREATE TABLE `produk` (
@@ -126,7 +140,8 @@ CREATE TABLE `store_manager` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `store_manager` (`id`, `kode`, `nama`, `id_cabang`, `username`, `password`) VALUES
-(6,	'Kasir - 61',	'Lina',	2,	'lina',	'$2y$10$gQzf0z2QXDyEC8UV1Dj6heEzsSw8I7ta.8LOjbHHU6QF2fikGnHhm'),
-(7,	'Kasir - 38',	'Mif',	3,	'mif',	'$2y$10$ZYbqtZ50/dh/khcDO2QblOHnQiapANq6nNdutcZLfwmBIXUQOY8Dq');
+(7,	'12345678',	'Mif',	3,	'mif',	'$2y$10$esVFk55IdoBLV664g6xsu.U1EkUk4H9jhuG9IreXMsYnn1hwiN9/y'),
+(8,	'432134',	'Niken',	2,	'niken',	'$2y$10$ET/Vzr8kkzVNZH1GRko39eWG2Z2389MS4.s4hmIhaFJ0VC654pw0G'),
+(9,	'33322244',	'Andre',	4,	'andre',	'$2y$10$gEsENwwiLpvEeAj8uzwwGeLLmMO/LS9dGMHyV/F1i5yU51GAC5jEq');
 
--- 2021-08-09 13:19:15
+-- 2021-08-11 03:25:30

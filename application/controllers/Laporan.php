@@ -19,9 +19,10 @@ class Laporan extends CI_Controller{
 		$this->data['all_cabang'] = $this->m_cabang->lihat();
 		$this->data['all_laporan'] = $this->m_laporan->lihat();
 		$this->data['no'] = 1;
-
-		$this->load->view('laporan/lihat', $this->data);
+		$this->data['status'] = $this->m_laporan->status_laporan();
+		$this->load->view('laporan/lihat', $this->data);	
 	}
+
 
 	public function tambah(){
 		$this->data['title'] = 'Tambah Laporan Penjualan';
@@ -136,10 +137,10 @@ class Laporan extends CI_Controller{
 		
 	if ($this->session->login['role'] == 'kasir'){
         if($start == null || $end == null){
-            $where          = "WHERE status = 'REVIEW'";
+            $where = "WHERE status = 'REVIEW' or status = 'REJECT'";
         }else{
 
-            $where = "WHERE status = 'REVIEW' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
+            $where = "WHERE status = 'REVIEW' or status = 'REJECT' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
         }
 	}elseif ($this->session->login['role'] == 'store_manager') {
 		if($start == null || $end == null){
@@ -187,10 +188,10 @@ class Laporan extends CI_Controller{
 
         if ($this->session->login['role'] == 'kasir'){
 			if($start == null || $end == null){
-				$where          = "WHERE status = 'REVIEW'";
+				$where          = "WHERE status = 'REVIEW' or status = 'REJECT'";
 			}else{
 	
-				$where = "WHERE status = 'REVIEW' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
+				$where = "WHERE status = 'REVIEW' or status = 'REJECT' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
 			}
 		}elseif ($this->session->login['role'] == 'store_manager') {
 			if($start == null || $end == null){
