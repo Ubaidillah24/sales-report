@@ -84,7 +84,7 @@ class Laporan extends CI_Controller{
 	public function ubah($no_laporan){
 		if ($this->session->login['role'] == 'kasir'){
 			$this->session->set_flashdata('error', 'Ubah data hanya untuk store manager & admin!');
-			redirect('dashboard');
+			redirect('laporan');
 		}
 
 		$this->data['title'] = 'Ubah Status';
@@ -134,13 +134,28 @@ class Laporan extends CI_Controller{
         $select         = "";
 
 		
-
+	if ($this->session->login['role'] == 'kasir'){
         if($start == null || $end == null){
-            $where          = "";
+            $where          = "WHERE status = 'REVIEW'";
         }else{
 
-            $where = "WHERE str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
+            $where = "WHERE status = 'REVIEW' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
         }
+	}elseif ($this->session->login['role'] == 'store_manager') {
+		if($start == null || $end == null){
+            $where          = "WHERE status = 'REVIEW' or status = 'REJECT'";
+        }else{
+
+            $where = "WHERE status = 'REVIEW' or status =  'REJECT' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
+        }
+	}elseif ($this->session->login['role'] == 'admin') {
+		if($start == null || $end == null){
+            $where          = "WHERE status = 'ACCEPT'";
+        }else{
+
+            $where = "WHERE status = 'ACCEPT' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
+        }
+	}
 		
 		$query ="
 		SELECT * FROM laporan $where
@@ -170,12 +185,28 @@ class Laporan extends CI_Controller{
 
 		
 
-        if($start == null || $end == null){
-            $where          = "";
-        }else{
-
-            $where = "WHERE str_to_date(l.tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
-        }
+        if ($this->session->login['role'] == 'kasir'){
+			if($start == null || $end == null){
+				$where          = "WHERE status = 'REVIEW'";
+			}else{
+	
+				$where = "WHERE status = 'REVIEW' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
+			}
+		}elseif ($this->session->login['role'] == 'store_manager') {
+			if($start == null || $end == null){
+				$where          = "WHERE status = 'REVIEW' or status = 'REJECT'";
+			}else{
+	
+				$where = "WHERE status = 'REVIEW' or status = 'REJECT' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
+			}
+		}elseif ($this->session->login['role'] == 'admin') {
+			if($start == null || $end == null){
+				$where          = "WHERE status = 'ACCEPT'";
+			}else{
+	
+				$where = "WHERE status = 'ACCEPT' && str_to_date(tgl_laporan , '%d/%m/%Y') between '$start' and '$end'";
+			}
+		}
 		
 		$query ="
 		SELECT dl.* FROM detail_laporan dl 

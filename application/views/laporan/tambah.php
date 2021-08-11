@@ -45,7 +45,7 @@
 											<label>Jam</label>
 											<input type="text" name="jam_laporan" value="<?= date('H:i:s') ?>" readonly class="form-control">
 										</div>
-										<?php if ($this->session->login['role'] == 'store_manager'): ?>
+										<?php if ($this->session->login['role'] == 'kasir' || $this->session->login['role'] == 'store_manager'): ?>
 										<div class="form-group col-md-3">
 											<label>Cabang</label>
 											<input type="text" name="nama_cabang" value="<?= $this->session->login['nama_cabang'] ?>" readonly class="form-control">
@@ -62,11 +62,11 @@
 											</select>
 										</div>
 										<?php endif; ?>
-										<?php if ($this->session->login['role'] == 'admin'): ?>
+										<?php if ($this->session->login['role'] == 'admin' || $this->session->login['role'] == 'kasir'): ?>
 										<div class="form-group col-md-3">
 											<label>Nama Store Manager</label>
 											<select name="nama_store_manager" id="nama_store_manager" class="form-control">
-												<option value="">Pilih Store_manager</option>
+												<option value="">Pilih Store Manager</option>
 													<?php foreach ($all_store_manager as $store_manager): ?>
 														<option value="<?= $store_manager->nama ?>"><?= $store_manager->nama ?></option>
 													<?php endforeach ?>
@@ -95,11 +95,11 @@
 												<input type="number" name="mtd_nett" value="" class="form-control" placeholder="Masukkan MTD NETT">
 											</div>
 											<div class="form-group">
-												<label>Sales Race</label>
+												<label>Sales Race %</label>
 												<input type="text" name="sales_race" value="" class="form-control" placeholder="Masukkan Sales Race">
 											</div>
 											<div class="form-group">
-												<label>Sales Achieve</label>
+												<label>Sales Achieve %</label>
 												<input type="text" name="sales_achieve" value="" class="form-control" placeholder="Masukkan Sales Achieve">
 											</div>
 										</div>

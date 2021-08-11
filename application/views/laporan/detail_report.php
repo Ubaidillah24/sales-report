@@ -10,6 +10,11 @@
 					<td><?= $laporan->no_laporan ?></td>
 				</tr>
 				<tr>
+					<td><strong>Status</strong></td>
+					<td>:</td>
+					<td><?= $laporan->status ?></td>
+				</tr>
+				<tr>
 					<td><strong>Cabang</strong></td>
 					<td>:</td>
 					<td><?= $laporan->nama_cabang ?></td>
@@ -88,6 +93,8 @@
 					<td><strong>Shopee Food</strong></td>
 					<td>:</td>
 					<td>Rp. <?= $laporan->shopee_food ?></td>
+				</tr>
+				<tr>
 				</tr>
 			</table>
 		</td>

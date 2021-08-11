@@ -41,7 +41,12 @@
 					</div>
 				<?php endif ?>
 				<div class="card shadow">
-					<div class="card-header"><strong><?= $title ?> - <?= $laporan->no_laporan ?></strong></div>
+					<div class="card-header">
+						<div class="row">
+							<div class="col-lg"><strong><?= $title ?> - <?= $laporan->no_laporan ?></div>
+							<div class="col-lg"><strong>Status - <?= $laporan->status ?></strong></div>
+						</div>
+					</div>
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-4">

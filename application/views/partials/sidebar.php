@@ -21,6 +21,7 @@
 					<span>Master Kategori</span></a>
 			</li>
 
+
 			<li class="nav-item <?= $aktif == 'produk' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('produk') ?>">
 					<i class="fas fa-fw fa-box"></i>
@@ -32,6 +33,7 @@
 					<i class="fas fa-fw fa-store"></i>
 					<span>Master Cabang</span></a>
 			</li>
+
 
 			<li class="nav-item <?= $aktif == 'kasir' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('kasir') ?>">

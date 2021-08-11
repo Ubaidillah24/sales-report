@@ -5,7 +5,7 @@ use Dompdf\Dompdf;
 class Produk extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
-		if($this->session->login['role'] != 'store_manager' && $this->session->login['role'] != 'admin') redirect();
+		// if($this->session->login['role'] != 'store_manager' && $this->session->login['role'] != 'admin') redirect();
 		$this->data['aktif'] = 'produk';
 		$this->load->model('M_produk', 'm_produk');
 		$this->load->model('M_kategori', 'm_kategori');

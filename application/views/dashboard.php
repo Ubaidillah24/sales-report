@@ -42,74 +42,82 @@
 
 						<!-- Earnings (Monthly) Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Produk</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_produk ?></div>
-										</div>
-										<div class="col-auto">
-											<i class="fas fa-box fa-2x text-gray-300"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Earnings (Monthly) Card Example -->
-						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-success shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Store Manager</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_store_manager ?></div>
-										</div>
-										<div class="col-auto">
-											<i class="fas fa-users fa-2x text-gray-300"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Earnings (Monthly) Card Example -->
-						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-info shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Cabang</div>
-											<div class="row no-gutters align-items-center">
-												<div class="col-auto">
-													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $jumlah_cabang ?></div>
-												</div>
+							<a href="<?= base_url('produk') ?>">
+								<div class="card border-left-primary shadow h-100 py-2">
+									<div class="card-body">
+										<div class="row no-gutters align-items-center">
+											<div class="col mr-2">
+												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Produk</div>
+												<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_produk ?></div>
+											</div>
+											<div class="col-auto">
+												<i class="fas fa-box fa-2x text-gray-300"></i>
 											</div>
 										</div>
-										<div class="col-auto">
-											<i class="fas fa-store fa-2x text-gray-300"></i>
+									</div>
+								</div>
+							</a>
+						</div>
+
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<a href="<?= base_url('store_manager') ?>">
+								<div class="card border-left-success shadow h-100 py-2">
+									<div class="card-body">
+										<div class="row no-gutters align-items-center">
+											<div class="col mr-2">
+												<div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Store Manager</div>
+												<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_store_manager ?></div>
+											</div>
+											<div class="col-auto">
+												<i class="fas fa-users fa-2x text-gray-300"></i>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</a>
+						</div>
+
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<a href="<?= base_url('cabang') ?>">
+								<div class="card border-left-info shadow h-100 py-2">
+									<div class="card-body">
+										<div class="row no-gutters align-items-center">
+											<div class="col mr-2">
+												<div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Cabang</div>
+												<div class="row no-gutters align-items-center">
+													<div class="col-auto">
+														<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $jumlah_cabang ?></div>
+													</div>
+												</div>
+											</div>
+											<div class="col-auto">
+												<i class="fas fa-store fa-2x text-gray-300"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
 						</div>
 
 						<!-- Pending Requests Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="card border-left-warning shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Jumlah Laporan Hari Ini</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_laporan ?></div>
-										</div>
-										<div class="col-auto">
-											<i class="fas fa-file-invoice fa-2x text-gray-300"></i>
+							<a href="<?= base_url('laporan') ?>">
+								<div class="card border-left-warning shadow h-100 py-2">
+									<div class="card-body">
+										<div class="row no-gutters align-items-center">
+											<div class="col mr-2">
+												<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Jumlah Laporan Hari Ini</div>
+												<div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_laporan ?></div>
+											</div>
+											<div class="col-auto">
+												<i class="fas fa-file-invoice fa-2x text-gray-300"></i>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</a>
 						</div>
 
 						<div class="col-xl-12 col-md-6 mb-4">
@@ -187,7 +195,7 @@
 									<input type="text" value="<?= $this->session->login['nama'] ?>" readonly class="form-control mt-2 mb-2">
 									<strong>Username : </strong><br>
 									<input type="text" value="<?= $this->session->login['username'] ?>" readonly class="form-control mt-2 mb-2">
-									<?php if ($this->session->login['role'] == 'store_manager') : ?>
+									<?php if ($this->session->login['role'] == 'store_manager' || $this->session->login['role'] == 'kasir') : ?>
 										<strong>Cabang : </strong><br>
 										<input type="text" value="<?= $this->session->login['nama_cabang'] ?>" readonly class="form-control mt-2 mb-2">
 									<?php endif; ?>

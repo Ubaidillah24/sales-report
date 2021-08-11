@@ -102,6 +102,7 @@ class Login extends CI_Controller{
 				$session = [
 					'nik' => $get_kasir->nik,
 					'nama' => $get_kasir->nama,
+					'nama_cabang' => $get_kasir->nama_cabang,
 					'username' => $get_kasir->username,
 					'password' => $get_kasir->password,
 					'role' => $this->input->post('role'),

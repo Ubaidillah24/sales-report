@@ -49,16 +49,17 @@ INSERT INTO `detail_laporan` (`no_laporan`, `nama_produk`, `jumlah`) VALUES
 
 DROP TABLE IF EXISTS `kasir`;
 CREATE TABLE `kasir` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nik` int(12) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `id_cabang` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `kasir` (`id`, `nik`, `nama`, `id_cabang`, `username`, `password`) VALUES
-(0,	24314,	'Gita',	3,	'gita',	'$2y$10$FnL663lR7oxzPbUf/ofNHuPa.lpOxGn3U2a9hNrz9p4lTWo6VoMEy');
+(1,	24314,	'Gita',	3,	'gita',	'$2y$10$FnL663lR7oxzPbUf/ofNHuPa.lpOxGn3U2a9hNrz9p4lTWo6VoMEy');
 
 DROP TABLE IF EXISTS `kategori`;
 CREATE TABLE `kategori` (
@@ -128,4 +129,4 @@ INSERT INTO `store_manager` (`id`, `kode`, `nama`, `id_cabang`, `username`, `pas
 (6,	'Kasir - 61',	'Lina',	2,	'lina',	'$2y$10$gQzf0z2QXDyEC8UV1Dj6heEzsSw8I7ta.8LOjbHHU6QF2fikGnHhm'),
 (7,	'Kasir - 38',	'Mif',	3,	'mif',	'$2y$10$ZYbqtZ50/dh/khcDO2QblOHnQiapANq6nNdutcZLfwmBIXUQOY8Dq');
 
--- 2021-08-03 02:00:13
+-- 2021-08-09 13:19:15

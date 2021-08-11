@@ -73,8 +73,8 @@
 											<td>Target</td>
 											<td>NETT</td>
 											<td>MTD NETT</td>
-											<td>Sales Race</td>
-											<td>Sales Achieve</td>
+											<td>Sales Race %</td>
+											<td>Sales Achieve %</td>
 											<td>SC</td>
 											<td>Large</td>
 											<td>Grab</td>
@@ -254,11 +254,13 @@
 						render: function(data) {
 
 							return ` 
+								<?php if ($this->session->login['role'] == 'store_manager'): ?>
 									<a href="<?= base_url('laporan/ubah/'); ?>` + data.no_laporan + `" class="btn btn-primary btn-sm" ><i class="fa fa-pen"></i></a>
-
+								<?php endif; ?>
 									<a href="<?= base_url('laporan/detail/'); ?>` + data.no_laporan + `" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+								<?php if ($this->session->login['role'] == 'admin' || $this->session->login['role'] == 'store_manager'): ?>
 									<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('laporan/hapus/') ?>` + data.no_laporan + `" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-																		
+								<?php endif; ?>										
 									`;
 						}
 					}
